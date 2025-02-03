@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dark/Light Theme Toggle Component</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles/theme.css" />
+        <link rel="stylesheet" href="styles/main.css" />
+        
+    </head>
+    <body>
+        <header>
+            <div class="header-content">
+                <h1>Dark/Light Theme Toggle Component</h1>
+                <div class="space"></div>
+                <div class="theme-toggle">
+                    <dark-light-toggle></dark-light-toggle>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="page-content">
+                
+                <p>This JavaScript module provides a simple way to implement a dark/light theme switcher on your website. It automatically detects the user's system theme preference and offers an optional custom web component for manual toggling.</p>
+
+                <h2>Features</h2>
+            
+                <ul>
+                    <li><strong>Automatic System Theme Detection:</strong> Automatically switches between dark and light themes based on the user's system preferences using <code>prefers-color-scheme</code>.</li>
+                    <li><strong>Manual Toggle:</strong> Provides an optional custom web component (<code>&lt;dark-light-toggle&gt;</code>) for users to manually switch between themes.</li>
+                    <li><strong>Customizable Styles:</strong> Allows you to customize the appearance of the toggle button via CSS variables.</li>
+                    <li><strong>Auto Mode Disable:</strong> Provides an option to disable automatic theme switching.</li>
+                     <li><strong>Keyboard Accessibility:</strong> Toggle button supports keyboard navigation with `Enter` or `Space` keys</li>
+                </ul>
+            
+                <h2>Usage</h2>
+            
+                <h3>1. Include the Script</h3>
+            
+                <p>Add the following script tag to your HTML file, preferably in the <code>&lt;head&gt;</code> section or before the closing <code>&lt;/body&gt;</code> tag:</p>
+            
+                <pre><code>&lt;script src="path/to/component/dark-light-toggle.js"&gt;&lt;/script&gt;</code></pre>
+            
+                <p>Replace <code>"path/to/component/dark-light-toggle.js"</code> with the actual path to the <code>dark-light-toggle.js</code> file.</p>
+            
+                <h3>2. Add the Custom Component (Optional)</h3>
+            
+                <p>To provide a manual toggle button, use the <code>&lt;dark-light-toggle&gt;</code> custom element where you want it to appear in your HTML:</p>
+            
+                <pre><code>&lt;dark-light-toggle&gt;&lt;/dark-light-toggle&gt;</code></pre>
+            
+                <p>This will render a clickable icon that toggles between dark and light themes.</p>
+            
+                <h3>3. Customize Styles (Optional)</h3>
+            
+                <p>You can customize the look of the toggle button by setting the following CSS variables on the <code>&lt;dark-light-toggle&gt;</code> element:</p>
+            
+<pre><code class="language-css">dark-light-toggle {
+    --color: var(--basic-txt-color);  /* Icon color */
+    --size: 1.5rem;                   /* Icon size */
+}
+</code></pre>
+            
+                <p>Default Values:</p>
+            
+                <ul>
+                    <li><code>--color</code>: <code>#000</code> (for light mode) / <code>#fff</code> (for dark mode)</li>
+                    <li><code>--size</code>: <code>1rem</code></li>
+                </ul>
+            
+                <p>Adjust the <code>--color</code> to match your brand or text color and the <code>--size</code> to control its visual dimensions.</p>
+            
+                <h3>4. Customize Auto Mode and Visibility (Optional)</h3>
+            
+                <p>The <code>&lt;dark-light-toggle&gt;</code> component provides 2 optional attributes:</p>
+            
+                <ul>
+                    <li>
+                        <code>auto</code>:
+                        <ul>
+                            <li>default <code>true</code></li>
+                            <li>accepts a boolean value (<code>true</code> or <code>false</code>) to set if auto mode should be enabled.</li>
+                            <li>can be set on component init as <code>&lt;dark-light-toggle auto="false"&gt;&lt;/dark-light-toggle&gt;</code>.</li>
+                            <li>dynamically can be changed as <code>document.querySelector('dark-light-toggle').setAttribute('auto', 'false');</code></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <code>visible</code>:
+                        <ul>
+                            <li>default <code>true</code></li>
+                            <li>accepts a boolean value (<code>true</code> or <code>false</code>) to set the visibility of the button.</li>
+                            <li>can be set on component init as <code>&lt;dark-light-toggle visible="false"&gt;&lt;/dark-light-toggle&gt;</code>.</li>
+                             <li>dynamically can be changed as <code>document.querySelector('dark-light-toggle').setAttribute('visible', 'false');</code>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            
+                 <h3>5. CSS Classes</h3>
+            
+                <p>The script automatically adds <code>dark</code> or <code>light</code> classes to the <code>&lt;html&gt;</code> tag. You can then use these classes to style your website differently for dark and light themes:</p>
+            
+<pre><code class="language-css">/* Styles for light theme */
+html.light {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Styles for dark theme */
+html.dark {
+    background-color: #333;
+    color: #eee;
+}
+</code></pre>
+            
+                <h2>How it Works</h2>
+            
+                <ul>
+                    <li><strong>System Theme Check:</strong> The script uses <code>window.matchMedia('(prefers-color-scheme: dark)')</code> to check the user's system's color scheme preference.</li>
+                    <li><strong>Theme Initialization:</strong> On page load, the script sets the initial theme based on system settings.</li>
+                    <li><strong><code>html</code> Class Toggle:</strong> The script adds or removes <code>dark</code> and <code>light</code> classes on the <code>&lt;html&gt;</code> element to enable theme-specific CSS styles.</li>
+                    <li><strong>Web Component:</strong> The optional <code>&lt;dark-light-toggle&gt;</code> component provides the manual toggle functionality.</li>
+                     <li><strong>CSS Variables:</strong> The custom component allows style customization through CSS variables <code>--color</code> and <code>--size</code>.</li>
+                </ul>
+            
+                <h2>Example</h2>
+            
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Dark/Light Theme Toggle Example&lt;/title&gt;
+    &lt;script src="dark-light-toggle.js"&gt;&lt;/script&gt;
+    &lt;style&gt;
+        html.light {
+            background-color: #fff;
+            color: #000;
+        }
+        html.dark {
+            background-color: #333;
+            color: #eee;
+        }
+        dark-light-toggle {
+            --color: red;
+            --size: 2rem;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Theme Toggle Example&lt;/h1&gt;
+    &lt;p&gt;This page will automatically switch to dark or light theme.&lt;/p&gt;
+    &lt;p&gt;You can use the button below to switch the theme manually.&lt;/p&gt;
+    &lt;dark-light-toggle&gt;&lt;/dark-light-toggle&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            
+                <h2>Notes</h2>
+            
+                <ul>
+                    <li>Ensure the path to <code>dark-light-toggle.js</code> is correct.</li>
+                    <li>The icon used in the toggle is based on Font Awesome's SVG icons, embedded directly into the component. You can customize these by modifying the template in the <code>dark-light-toggle.js</code> file if necessary.</li>
+                    <li>The component uses shadow DOM encapsulation to prevent styling conflicts.</li>
+                    <li>If you're using CSS frameworks that require setting theme classes in a different way or other kind of integration, please do a manual integration using provided <code>setTheme()</code> function.</li>
+                </ul>
+            
+                <p>This README provides a basic guide to implementing dark/light theme switching on your website using the provided JavaScript module.</p>
+            
+
+
+            </div>
+        </main>
+        <footer>
+            <div class="footer-content">
+                Module by <a href="https://medium.com/@aleksei_golubev">Aleksei Golubev</a><br/>
+                Readme by Gemini 2.0 Flash Experimantal<br/>
+                &copy; 2025 
+            </div>
+        </footer>
+        <script src="scripts/dark-light-toggle.js"></script>
+    </body>
+</html>

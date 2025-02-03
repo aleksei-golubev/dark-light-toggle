@@ -1,0 +1,22 @@
+:root {
+    --theme-black: #404040;
+    --theme-blue: #4c4c81;
+    --theme-brown: #ddd1c5;
+    --theme-gray: #aaaaaa;
+    --theme-white: #fcfcfc;    
+
+    --basic-border-color: var(--theme-gray);
+    --basic-font-family: 'Tinos';
+}
+
+:root.light {
+    --basic-bg-color: var(--theme-white);
+    --basic-txt-color: var(--theme-black);
+    --basic-link-color: var(--theme-blue);
+}
+
+:root.dark {
+    --basic-bg-color: var(--theme-black);
+    --basic-txt-color: var(--theme-white);
+    --basic-link-color: var(--theme-brown);
+}
