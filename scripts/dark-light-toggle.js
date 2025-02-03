@@ -7,7 +7,7 @@
      * <script src="path/to/component/dark-light-toggle.js"></script>
      * 
      * Custom web component is optional and can be used to provide
-     * user manuality switch theme with possibility to disable auto switching.
+     * user switch theme manually with possibility to disable auto switching.
      * 
      * Custom component style support two properties which can be set in global stylesheet:
      * 
@@ -24,16 +24,16 @@
     // Media query to check theme from system settings
     const darkMode = window.matchMedia('(prefers-color-scheme: dark)');
 
-    // Link to root element for setting class: dark/light
+    // Link to the root element for setting class: dark/light
     const html = document.documentElement;
 
-    // Define dafault value for auto theme switching
+    // Define dafault value for theme auto switching
     let isAuto = true;
 
     // Variable to store current theme
     let currentMode;
 
-    // Toggeler button. By default is not defined.
+    // Toggle button. By default is not defined.
     let toggleModeButton;
 
     // General theme setup function
