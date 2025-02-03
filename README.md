@@ -134,4 +134,3 @@ html.dark {
 *   If you're using CSS frameworks that require setting theme classes in a different way or other kind of integration, please do a manual integration using provided `setTheme()` function.
 
 This README provides a basic guide to implementing dark/light theme switching on your website using the provided JavaScript module.
-```
